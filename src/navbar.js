@@ -13,6 +13,9 @@ function Navbar() {
         <li>
           <Link to="/getAPi">get Api</Link>
         </li>
+        <li>
+          <Link to="/create">User Information</Link>
+        </li>
       </ul>
     </div>
   );
