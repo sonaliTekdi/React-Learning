@@ -1,3 +1,4 @@
+import { background } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 function GetAPi() {
@@ -19,20 +20,22 @@ function GetAPi() {
     getData();
   }, []);
   return (
-    <table border="1">
-      <tr>
-        <td>Id</td>
-        <td>Title</td>
-        <td>Status</td>
-      </tr>
-      {toDos.map((item) => (
+    <>
+      <table border="1">
         <tr>
-          <td>{item.id}</td>
-          <td>{item.title}</td>
-          <td>{item.completed ? "true" : "false"}</td>
+          <td>Id</td>
+          <td>Title</td>
+          <td>Status</td>
         </tr>
-      ))}
-    </table>
+        {toDos.map((item) => (
+          <tr>
+            <td>{item.id}</td>
+            <td>{item.title}</td>
+            <td>{item.completed ? "true" : "false"}</td>
+          </tr>
+        ))}
+      </table>
+    </>
   );
 }
 export default GetAPi;

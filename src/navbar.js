@@ -16,6 +16,15 @@ function Navbar() {
         <li>
           <Link to="/create">User Information</Link>
         </li>
+        <li>
+          <Link to="/counter">Counter (State Example)</Link>
+        </li>
+        <li>
+          <Link to="/empinfo">Employee Information</Link>
+        </li>
+        <li>
+          <Link to="/courses">Courses</Link>
+        </li>
       </ul>
     </div>
   );
