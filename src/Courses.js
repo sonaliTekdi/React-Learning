@@ -17,6 +17,7 @@ function Courses() {
   });
   const [deleteData, setDeleteData] = useState([]);
   const [editId, setEditId] = useState(null);
+  const [errors, setError] = useState([]);
 
   async function getcourses() {
     try {
@@ -42,13 +43,20 @@ function Courses() {
         "http://localhost:3400/create/courses",
         payload
       );
-      if (response) {
+
+      if (response.ok) {
         getcourses();
         setFormData(initialFormData);
+        setError([]);
+        const coursesData = await response.json();
+        setFormData(coursesData);
+      } else {
+        const errorData = await response.json();
+        setError(errorData.errors);
       }
-      const coursesData = await response.json();
-      setFormData(coursesData);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
 
     if (editId) {
       try {
@@ -153,6 +161,16 @@ function Courses() {
           onChange={handleInputChange}
         />
         <br />
+        {errors.length > 0 && (
+          <div>
+            {errors.map((error, index) => (
+              <p key={index} style={{ color: "red" }}>
+                {error}
+              </p>
+            ))}
+          </div>
+        )}
+
         <input type="submit" value="Submit" />
       </form>
     </>
